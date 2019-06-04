@@ -7,6 +7,7 @@ function truncate(string, maxlength) {
     if (string.length > maxlength) {
         return string.substring(0, 19) + '...';
     }
+    return string;
 }
 
 console.log(truncate('I wanna to say next thing about this topic', 22)); // 'I wanna to say next...'
