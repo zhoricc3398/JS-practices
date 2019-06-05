@@ -1,3 +1,12 @@
+Object.prototype.extend = function(obj) {
+    Object.getOwnPropertyNames(obj).forEach((key) => {
+        if (!this.hasOwnProperty(key)) {
+            Object.defineProperty(this, key, Object.getOwnPropertyDescriptor(obj, key));
+        }
+        return this;
+    });
+}
+
 const data = { a: 'a' };
 const source = { a: 'A', b: 'b' };
 
