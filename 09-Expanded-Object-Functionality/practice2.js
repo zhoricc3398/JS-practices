@@ -1,3 +1,18 @@
+Object.prototype.mergeDeepRight = function(obj) {
+    Object.keys(obj).forEach((item) => {
+        if (typeof obj[item] !== 'object') {
+            this[item] = obj[item];
+        } else if (Array.isArray(obj[item])) {
+            this[item] = this[item].concat(obj[item]);
+        } else if (this.hasOwnProperty(item)) {
+            this[item].mergeDeepRight(obj[item]);
+        }
+    });
+    return this;
+}
+
+Object.defineProperty(Object.prototype, 'mergeDeepRight', {enumerable: false} );
+
 const data = {
     name: 'fred',
     age: 10,
@@ -22,17 +37,4 @@ data.mergeDeepRight({
 });
 
 console.log(data);
-
-// data will be
-// {
-// 	name: 'fred',
-// 	age: 40,
-// 	contact: {
-// 		email: 'baa@example.com',
-//         favorite: true,
-// 		meta: {
-//             verified: true,
-//             tags: ['vip', 'important']
-//         }
-// 	}
-// }
+console.log(data.contact.meta.tags);
