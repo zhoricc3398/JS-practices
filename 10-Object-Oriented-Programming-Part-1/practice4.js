@@ -29,7 +29,7 @@ function CoffeeMachine(power, capacity) {
     };
     
     this.setOnReady = function(cb) {
-        return cb();
+        onReady = cb;
     }
 }
 
