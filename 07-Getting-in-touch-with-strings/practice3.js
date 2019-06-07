@@ -5,7 +5,7 @@ function truncate(string, maxlength) {
         throw new Error('Second parameter must be a number')
     }
     if (string.length > maxlength) {
-        return string.substring(0, 19) + '...';
+        return string.substring(0, maxlength-3) + '...';
     }
     return string;
 }
