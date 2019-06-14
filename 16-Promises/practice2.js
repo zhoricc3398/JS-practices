@@ -5,7 +5,7 @@ const getCustomers = (customers, countries) =>
                 reject(`We don't have information about country for this customer: ${customer.name}`);
             }
             return customer.verified ? Object.assign(customer, countries.find(country => customer.id === country.id)) : customer
-        }));
+        }).filter(customer => customer.verified));
     })
 
 const customers = [
